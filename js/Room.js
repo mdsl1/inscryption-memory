@@ -187,7 +187,7 @@ btnMusic.addEventListener("click", startSounds);
 // Inicializa o carrossel no item do meio e o timer aleatório para os raios
 updateWindow();
 checkLastWindow();
-//startLightningStorm();
+startLightningStorm();
 
 window.onload = () => {
   startSounds();
