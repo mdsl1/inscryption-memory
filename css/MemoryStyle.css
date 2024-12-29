@@ -1,0 +1,544 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&display=swap');
+
+/*Reset de configurações*/
+*{
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-size: 100%;
+}
+/*Configurações do "carrossel" onde o jogo está*/
+body{
+  font-family: "Rubik Wet Paint", system-ui;
+  color: white;
+  background: #000;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+#room{
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+#roomInner{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease-in-out;
+}
+.window{
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  text-align: center;
+}
+/*Configuração dos botões das janelas*/
+#btnPrev, #btnNext {
+  position: absolute;
+  top: 40%;
+  background: none;
+  color: #f00;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+#btnPrev {
+  left: 2%;
+}
+#btnNext {
+  right: 2%;
+}
+
+/*Configurações do menu inicial*/
+#initialMenuContainer{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  transition: opacity 1.5s ease, visibility 1.5s ease;
+  opacity: 1;
+  visibility: visible;
+  z-index: 999;
+}
+#menuContent{
+  width: 100%;
+  height: 100%;
+  background: url("../Midias/Backgrounds/menuBackground.png") no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-flow: column nowrap;
+}
+#menuContent h1{
+  color: #ffbf00;
+  font-size: 5rem;
+  text-shadow: #f00 0 0 30px;
+  margin: 2% 0 15% 0;
+}
+#menuContent h2{
+  color: #ffbf00;
+  font-size: 2.5rem;
+  text-shadow: #f00 0 0 30px;
+  margin-top: 1%;
+}
+#btnPageGame{
+  margin-bottom: 6%;
+}
+#btnGuide{
+  margin: 1% 0;
+}
+#btnMusic{
+  background: #630000;
+  color: #ffbf00;
+  font-family: "Rubik Wet Paint", system-ui;;
+  width: 18%;
+  height: 5%;
+  border: #ffbf00 2px solid;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  position: fixed;
+  bottom: 5%;
+  right: 5%;
+}
+#btnPageGame, #btnGuide{
+  background: #630000;
+  color: #ffbf00;
+  font-family: "Rubik Wet Paint", system-ui;;
+  width: 20%;
+  height: 10%;
+  border: #ffbf00 2px solid;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+#btnPageGame:hover, #btnGuide:hover, #btnMusic:hover{
+  background: #630000;
+  color: #f00;
+  border: #f00 2px solid;
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 0 10px 5px red;
+}
+/*Configurações do "carrossel" de imagens do guia*/
+#guide{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  visibility: hidden;
+}
+#guideInner{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease-in-out;
+}
+.guideItem{
+  width: 100%;
+  height: 100%;
+  flex-shrink: 0;
+  text-align: center;
+}
+/*Configuração dos botões do guia*/
+#btnGuideContainer{
+  position: absolute;
+  display: flex;
+  flex-flow: row nowrap;
+  width: 35%;
+  height: 10%;
+  background-color: #383838;
+  border-radius: 30px;
+  align-items: center;
+  justify-content: space-around;
+  z-index: 999;
+  top: 5%;
+  left: 32.5%;
+}
+#btnGuideContainer button {
+  background: none;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-family: "Rubik Wet Paint", system-ui;;
+}
+#btnGuideContainer button:hover{
+  color: #f00;
+  transition: 0.5s ease-in-out;
+}
+
+/*Configurações de itens genéricos*/
+#transition{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transition: opacity 2s ease, visibility 2s ease;
+  opacity: 0;
+  visibility: hidden;
+}
+.pupil.lost {
+  background-color: red;
+  box-shadow: 0 0 10px 5px red;
+  transition: background-color 0.5s ease, box-shadow 0.5s ease;
+}
+
+/*Configurações para o menu de sons do jogo*/
+.bntShowMenu{
+  color: #f00;
+  font-size: 5rem;
+  position: fixed;
+  background: none;
+  border: none;
+  cursor: pointer;
+  top: 10%;
+}
+#configMenu{
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+#configMenu h2{
+  font-size: 2.5rem;
+  color: #f00;
+  margin: 4% 0 3% 0;
+}
+#configMenu h3{
+  font-size: 2rem;
+  color: #f00;
+  margin: 2% 0 0 0;
+}
+.soundControl{
+  margin: 1% 0;
+}
+.soundControl input{
+  cursor: pointer;
+}
+#btnConfigMenuContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 20%;
+  margin: 1% 0;
+}
+#btnConfigMenuContainer button{
+  color: #f00;
+  font-size: 3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+
+
+/*Pagina Principal*/
+#eyeContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  height: 50vh;
+  justify-content: center;
+  z-index: 9;
+}
+.eye{
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 6rem 10px 5rem 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: piscar1 3s infinite ease-in-out;
+}
+.pupil{
+  width: 5px;
+  height: 10px;
+  background-color: #000;
+  border-radius: 50%;
+  box-shadow: 0 0 6px #f00;
+  animation: piscar2 3s infinite ease-in-out;
+}
+/*Animação dos olhos para piscar*/
+@keyframes piscar1 {
+  0%, 90%, 100% {
+      height: 20px;
+  }
+  95% {
+      height: 0;
+  }
+}
+@keyframes piscar2 {
+  0%, 90%, 100% {
+      height: 5px;
+  }
+  95% {
+      height: 0;
+  }
+}
+#tableContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  perspective: 500px;
+  height: 50vh;
+  background: url("../Midias/Backgrounds/backgroundTable.jpg") no-repeat center center;
+  background-size:cover;
+}
+#cardContainer {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  perspective: 500px;
+  width: 100%;
+  height: 100%;
+  
+}
+#l1{
+  height: fit-content;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: center;
+  transform: rotateX(55deg); /* Inclinando para simular a perspectiva */
+  transform-origin: top bottom;
+  margin-bottom: -50px;
+  /*O problema da distância vertical eu consegui resolver, agora a horizontal (que expande o tamanho da tela) não teve como*/
+}
+#l1 .card{
+  margin: 0 10px;
+  width: 75px;
+  height: 125px;
+}
+#l2{
+  height: fit-content;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: center;
+  transform: rotateX(55deg); /* Inclinando para simular a perspectiva */
+  transform-origin: top bottom;
+  margin-bottom: -40px;
+  /*O problema da distância vertical eu consegui resolver, agora a horizontal (que expande o tamanho da tela) não teve como*/
+}
+#l2 .card{
+  margin: 0 15px;
+  width: 90px;
+  height: 135px;
+}
+#l3{
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row nowrap;
+  justify-content: center;
+  transform-origin: top bottom;
+  transform: rotateX(55deg); /* Inclinando para simular a perspectiva */
+  margin-bottom: 35px;
+  /*O problema da distância vertical eu consegui resolver, agora a horizontal (que expande o tamanho da tela) não teve como*/
+}
+#l3 .card{
+  margin: 0 25px;
+  width: 105px;
+  height: 158px;
+}
+.card{
+  position: relative;
+  box-shadow: 0 0 15px 1px #f00;
+  transition: all 1s ease;
+  transform-style: preserve-3d;
+}
+.face{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  background-color: #f00;
+}
+.flipped{
+  background: url("../Midias/CardFlipped.png") no-repeat;
+  background-size: cover;
+  order: 1;
+  backface-visibility: hidden;
+}
+.back{
+  background-color: #f00;
+  transform: rotateY(180deg);
+  background-size: cover;
+  background-position: center;
+}
+.disabledCard{
+  box-shadow: 0 0 15px 10px #f00;
+  opacity: 0.5;
+  filter: saturate(1) contrast(3);
+}
+.revealCard{
+  transform: rotateY(180deg);
+  box-shadow: 0 0 15px 5px #f00;
+}
+
+/*Pagina do score e tempo*/
+#scoreWall{
+  width: 100%;
+  height: 100%;
+}
+#scoreContainer{
+  width: 80%;
+  height: 90%;
+  margin: 0 auto;
+  background: url("../Midias/Backgrounds/backgroundTimerAndMoves.png") no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-flow: row nowrap;
+}
+#btnStart{
+  background: #cf0000;
+  color: #000;
+  font-family: "Rubik Wet Paint", system-ui;;
+  width: 10%;
+  height: 5%;
+  border: #630000 2px solid;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+  position: fixed;
+  top: 85%;
+  left: 350%;
+}
+#btnStart:hover{
+  background: #630000;
+  color: #f00;
+  border: #f00 2px solid;
+  transition: 0.5s ease-in-out;
+  box-shadow: 0 0 10px 5px red;
+}
+#frameContainer{
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  width: 21.5%;
+  height: 39%;
+  margin: 22% 0 0 28%;
+}
+#movesContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  gap: 2%;
+  width: 100%;
+  margin: 1% 0;
+}
+#lineFrame{
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  justify-content: space-around;
+  margin: 1% 0;
+}
+#deathsContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2%;
+  width: 35%;
+  height: 10%;
+  
+}
+#winsContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 2%;
+  width: 35%;
+  height: 10%;
+}
+#timer{
+  width: 5%;
+  height: 3%;
+  font-size: 1.3rem;
+  color: #f00;
+  margin: 25.4% 13.5%;
+  text-align: center;
+}
+
+/*Pagina da porta e os raios*/
+#doorContainer{
+  width: 80%;
+  height: 80%;
+  display: flex;
+  margin: 0 auto;
+  background: url("../Midias/Backgrounds/backgroundDoor.png") no-repeat;
+  background-size: cover;
+  z-index: 999;
+}
+#lightning{
+  width: 6.15%;
+  height: 4%;
+  background-color: #000;
+  margin: 19.42% 0 0 39.3%;/*234.5px 0 0 471px*/
+}
+
+/*Jumpscare*/
+#jumpscareContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+#jumpscareImg {
+  width: 50px; /* Tamanho inicial pequeno */
+  height: auto;
+  top: 50%;
+  transform: scale(0.1); /* Escala inicial bem pequena */
+  filter: brightness(0); /* Escurece a imagem inicialmente */
+  transition: transform 4s ease, filter 4s ease;
+}
+#eyeContainerJumpscare{
+  display: flex;
+  flex-flow: row nowrap;
+  position: absolute;
+  top: 0;
+  justify-content: center;
+  z-index: 9;
+}
+.eyeJumpscare{
+  width: 40px;
+  height: 20px;
+  background-color: white;
+  border-radius: 50%;
+  margin: 6rem 10px 5rem 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.pupilJumpscare{
+  width: 5px;
+  height: 5px;
+  background-color: #f00;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 5px red;
+}
