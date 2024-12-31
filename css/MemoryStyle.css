@@ -43,7 +43,7 @@ body{
   color: #f00;
   border: none;
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 #btnPrev {
   left: 2%;
@@ -244,6 +244,23 @@ body{
 
 
 /*Pagina Principal*/
+#infoContainer{
+  position: fixed;
+  top: 2%;
+  left: 402%;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  width: 25vw;
+  height: 7vh;
+}
+#mainWindowMovesContainer, #mainWindowTimerContainer{
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  gap: 3%;
+  color: #f00;
+}
 #eyeContainer{
   display: flex;
   flex-flow: row nowrap;

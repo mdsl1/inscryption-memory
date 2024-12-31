@@ -97,13 +97,16 @@ function contWins(){
 }
 //Aplica o valor ao html
 function contPlays(){
+    let playsElementShow = document.getElementById("contPlaysMainWindow");
     let playsElement = document.getElementById("numPlays");
     playsElement.textContent = numPlays;
+    playsElementShow.textContent = numPlays;
 }
 
 //Inicia o timer e aplica o valor ao html
 function startTimer(){
     let timerElement = document.getElementById("timer");
+    let timerElementShow = document.getElementById("timerMainWindow");
     timerInterval = setInterval(() => {
         if (timeLeft < 0) {
             clearInterval(timerInterval);
@@ -113,6 +116,7 @@ function startTimer(){
             const minutes = Math.floor(timeLeft / 60);
             const seconds = timeLeft % 60;
             timerElement.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+            timerElementShow.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
             timeLeft--;
         }
     }, 1000);
