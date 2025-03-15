@@ -71,58 +71,30 @@ body{
   background-size: cover;
   display: flex;
   justify-content: start;
-  align-items: center;
+  align-items: baseline;
   flex-flow: column nowrap;
+  padding: 3% 0 0 5%;
 }
 #menuContent h1{
   color: #ffbf00;
-  font-size: 5rem;
-  text-shadow: #f00 0 0 30px;
-  margin: 2% 0 15% 0;
-}
-#menuContent h2{
-  color: #ffbf00;
   font-size: 2.5rem;
   text-shadow: #f00 0 0 30px;
-  margin-top: 1%;
+  margin: 3% 0 6% 0;
 }
-#btnPageGame{
-  margin-bottom: 6%;
-}
-#btnGuide{
-  margin: 1% 0;
-}
-#btnMusic{
-  background: #630000;
-  color: #ffbf00;
-  font-family: "Rubik Wet Paint", system-ui;;
-  width: 18%;
-  height: 5%;
-  border: #ffbf00 2px solid;
-  border-radius: 30px;
-  cursor: pointer;
-  font-size: 1.1rem;
-  position: fixed;
-  bottom: 5%;
-  right: 5%;
-}
-#btnPageGame, #btnGuide{
-  background: #630000;
-  color: #ffbf00;
-  font-family: "Rubik Wet Paint", system-ui;;
-  width: 20%;
-  height: 10%;
-  border: #ffbf00 2px solid;
-  border-radius: 30px;
+
+#btnPageGame, #btnGuide, #btnMusic{
+  background: none;
+  border: none;
+  color: #ffce3c;
+  font-family: "Rubik Wet Paint", system-ui;
+  margin: 1.5% 0;
   cursor: pointer;
   font-size: 1.5rem;
 }
 #btnPageGame:hover, #btnGuide:hover, #btnMusic:hover{
-  background: #630000;
   color: #f00;
-  border: #f00 2px solid;
-  transition: 0.5s ease-in-out;
-  box-shadow: 0 0 10px 5px red;
+  transition: 0.3s ease-in-out;
+  text-shadow: 0 0 10px red;
 }
 /*Configurações do "carrossel" de imagens do guia*/
 #guide{
@@ -172,7 +144,7 @@ body{
 }
 #btnGuideContainer button:hover{
   color: #f00;
-  transition: 0.5s ease-in-out;
+  transition: 0.3s ease-in-out;
 }
 
 /*Configurações de itens genéricos*/
