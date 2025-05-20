@@ -221,7 +221,7 @@ function endGame(){
         }, 5000); // 5 segundos para o efeito total
         
         transition.style.visibility = "visible";
-        transition.style.opacity = "1"
+        transition.style.opacity = "1";
 
         setTimeout(() => {
             transition.style.opacity = '0';
